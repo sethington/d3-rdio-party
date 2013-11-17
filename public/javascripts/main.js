@@ -42,7 +42,7 @@ $(document).ready(function(){
 	});
 
 	$("#btBack").click(function(){
-		rdioObj.rdio().prev();
+		rdioObj.rdio().previous();
 	});
 
 	var base_data = [0,0,0,0,0,0,0,0];
@@ -57,21 +57,18 @@ $(document).ready(function(){
 		.append("circle");
 
 	rdioObj.bind("updateFrequencyData.rdio", function(e,data){
-		//console.log(data); // frequency
-
 		data = data.split(",");
+
 		circles
 			.data(data)
 			.enter();
 
 		circles
 			.attr("cx", function(d,i){
-				//console.log(i*5+250);
 				return i*150+50;
 			})
 			.attr("cy", 100)
 			.attr("r", function(d, i){
-				//console.log(d);
 				return d*50.0;
 			})
 			.style("fill", function(d){
