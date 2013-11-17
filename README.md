@@ -6,6 +6,7 @@ d3 data visualizations, based on frequencies from streamed rdio tracks.
 Running
 --
 npm install
+
 node app
 
 Browse to localhost:3000
