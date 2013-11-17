@@ -1,0 +1,27 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.track_info{
+	display:inline-block;
+}
+
+.track_controls{
+	display:inline-block;	
+	padding-right:10px;
+	font-size:30px;
+}
+
+img.track_info{
+	width:50px;
+	margin-right:10px;
+	vertical-align:baseline;
+}
+
+.glyphicon{
+	cursor:pointer;
+}

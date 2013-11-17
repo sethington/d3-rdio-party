@@ -1,0 +1,20 @@
+extends layout
+
+block content
+	nav.navbar.navbar-default
+		a.navbar-brand= title
+		ul.nav.navbar-nav.navbar-right
+			li
+				img#art.track_info
+				.track_info
+					#track
+					#album
+					#artist
+				.track_controls
+					span#btBack.glyphicon.glyphicon-step-backward
+					span#btPlay.glyphicon.glyphicon-pause
+					span#btForward.glyphicon.glyphicon-step-forward
+
+	#party_box
+		svg
+	#rdio_player
