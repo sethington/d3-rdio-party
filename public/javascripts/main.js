@@ -6,7 +6,7 @@ $(document).ready(function(){
 
 	rdioObj.bind('ready.rdio', function(e,userInfo) {
 		console.log("user deets", userInfo);
-        $(this).rdio().play('t28258102');
+        $(this).rdio().play('a2660305');
     });
 
 	rdioObj.bind('playingTrackChanged.rdio', function(e, playingTrack, sourcePosition) {
