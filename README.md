@@ -3,6 +3,8 @@ d3-rdio-party
 
 d3 data visualizations, based on frequencies from streamed rdio tracks. pretty much just a d3 playground for myself, but feel free to contribute :)
 
+Node / Express / jQuery / D3 / Bootstrap
+
 Running
 --
 npm install
