@@ -10,7 +10,7 @@ $(document).ready(function(){
     });
 
     $("#albums").change(function(e){
-    	var song_val = $(e.currentTarget).val();
+    	var song_val = $(this).val();
     	rdioObj.rdio().play(song_val);
     });
 
@@ -67,7 +67,7 @@ $(document).ready(function(){
 	});
 
 	$("#renderer").change(function(e){
-		visualizer.setRenderer($(e.currentTarget).val());
+		visualizer.setRenderer($(this).val());
 	});
 });
 
