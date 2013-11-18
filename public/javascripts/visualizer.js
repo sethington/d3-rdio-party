@@ -1,7 +1,8 @@
 var Visualizer = function(options){
 	var self = this,
-		base_data = [0,0,0,0,0,0,0,0],
-		container = options.container;
+		base_data = [.25,.50,.72,.20,.90,.80,.10,.22],
+		container = options.container,
+		container_height = $(options.container[0]).height();
 
 	self.api = {
 		'setRenderer': function(renderer){
@@ -25,21 +26,26 @@ var Visualizer = function(options){
 	};
 
 	self.renderEQ = function(data){
-		var eq = container.selectAll("g");
+		var eq = container.selectAll("rect");
+
+		var y = d3.scale.linear().range([container_height-50, 50]);
+		y.domain([0,d3.max(data,function(d){return d*50;})]);
 
 		if (eq[0].length === 0){
 			eq
 				.data(base_data)
 				.enter()
-				.append("g");
+				.append("rect");
+			data = base_data;
+			console.log(base_data);
 		}
 
 		eq.data(data).enter();
 
-		eq.append("rect")
-			.attr("x", function(d,i){return i*50 + 15;})
-			.attr("y", function(d,i){return d * 50;})
-			.attr("height", function(d,i){ return d*50;})
+		eq
+			.attr("x", function(d,i){ return i*50 + 15;})
+			.attr("y", function(d,i){ return container_height-y(d*50);})
+			.attr("height", function(d,i){ return y(d*50);})
 			.attr("width", "15px")
 			.style("fill", function(d){
 				return "green";
