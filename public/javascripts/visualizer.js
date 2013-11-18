@@ -26,31 +26,27 @@ var Visualizer = function(options){
 	};
 
 	self.renderEQ = function(data){
-		var eq = container.selectAll("rect");
+		var eq = container.selectAll("rect").data(data);
 
 		var y = d3.scale.linear().range([container_height-50, 50]);
 		y.domain([0,d3.max(data,function(d){return d*50;})]);
 
-		if (eq[0].length === 0){
-			eq
-				.data(base_data)
-				.enter()
-				.append("rect");
-			data = base_data;
-			console.log(base_data);
-		}
+		eq.enter().append("rect");
+			
+		eq.exit()
+		    .transition()
+		    .duration(10)
+		    .ease("exp")
+		    .attr("width", 0)
+		    .remove();
 
-		eq.data(data).enter();
-
-		eq
-			.attr("x", function(d,i){ return i*50 + 15;})
+		eq.transition().delay(10).attr("x", function(d,i){ return i*50 + 15;})
 			.attr("y", function(d,i){ return container_height-y(d*50);})
 			.attr("height", function(d,i){ return y(d*50);})
 			.attr("width", "15px")
 			.style("fill", function(d){
 				return "green";
 			});
-
 	};
 
 	self.renderCircles = function(data){
