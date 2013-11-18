@@ -72,9 +72,8 @@ $(document).ready(function(){
 });
 
 var Visualizer = function(options){
-	var self = this;
-	
-	var base_data = [0,0,0,0,0,0,0,0],
+	var self = this,
+		base_data = [0,0,0,0,0,0,0,0],
 		container = options.container;
 
 	self.api = {
