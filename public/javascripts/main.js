@@ -56,7 +56,7 @@ $(document).ready(function(){
 
 	var visualizer = Visualizer({
 		"container": container,
-		"mode": "circles"
+		"mode": "eq"
 	});
 	
 	rdioObj.bind("updateFrequencyData.rdio", function(e,data){

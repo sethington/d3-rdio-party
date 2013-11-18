@@ -45,24 +45,21 @@ var Visualizer = function(options){
 			.attr("height", function(d,i){ return y(d*100);})
 			.attr("width", "15px")
 			.style("fill", function(d){
-				return "green";
+				return "#4144A9";
 			});
 	};
 
 	self.renderCircles = function(data){
-		var self = this;
-		var circles = container.selectAll("circle");
+		var circles = container.selectAll("circle").data(data);
 
-		if (circles[0].length === 0){
-			circles
-				.data(base_data)
-				.enter()
-				.append("circle");
-		}
+		circles.enter().append("circle");
 
-		circles.data(data).enter();
+		circles.exit()
+			.transition()
+			.duration(10)
+			.remove();
 
-		circles
+		circles.transition().delay(10)
 			.attr("cx", function(d,i){
 				return i*150+50;
 			})
@@ -71,9 +68,37 @@ var Visualizer = function(options){
 				return d*50.0;
 			})
 			.style("fill", function(d){
-				return "green";
+				return "#4144A9";
 			});
 	};
+
+	self.init = function(){
+		var gradient = container.append("svg:defs")
+  			.append("svg:linearGradient")
+			.attr("id", "gradient-max")
+			.attr("x1", "0%")
+			.attr("y1", "0%")
+			.attr("x2", "0%")
+			.attr("y2", "50%")
+			.attr("spreadMethod", "pad");
+
+		gradient.append("svg:stop")
+			.attr("offset", "0%")
+			.attr("stop-color", "#FF0000")
+			.attr("stop-opacity", 1);
+
+		gradient.append("svg:stop")
+			.attr("offset", "30%")
+			.attr("stop-color", "#E8FA00")
+			.attr("stop-opacity", 0.75);	
+
+		gradient.append("svg:stop")
+			.attr("offset", "70%")
+			.attr("stop-color", "#00A90D")
+			.attr("stop-opacity", 0.75);
+	}
+
+	self.init();
 
 	return self.api;
 };
