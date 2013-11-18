@@ -25,3 +25,7 @@ img.track_info{
 .glyphicon{
 	cursor:pointer;
 }
+
+#renderer{
+	margin-left:15px;
+}
