@@ -28,8 +28,8 @@ var Visualizer = function(options){
 	self.renderEQ = function(data){
 		var eq = container.selectAll("rect").data(data);
 
-		var y = d3.scale.linear().range([container_height-50, 50]);
-		y.domain([0,d3.max(data,function(d){return d*50;})]);
+		var y = d3.scale.linear().range([1,container_height-20]);
+		y.domain([0,100]);
 
 		eq.enter().append("rect");
 			
@@ -41,8 +41,8 @@ var Visualizer = function(options){
 		    .remove();
 
 		eq.transition().delay(10).attr("x", function(d,i){ return i*50 + 15;})
-			.attr("y", function(d,i){ return container_height-y(d*50);})
-			.attr("height", function(d,i){ return y(d*50);})
+			.attr("y", function(d,i){ return container_height-y(d*100);})
+			.attr("height", function(d,i){ return y(d*100);})
 			.attr("width", "15px")
 			.style("fill", function(d){
 				return "green";
